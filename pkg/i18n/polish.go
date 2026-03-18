@@ -11,10 +11,10 @@ func polishSet() TranslationSet {
 		NoViewMachingNewLineFocusedSwitchStatement: "Żaden widok nie odpowiada instrukcji przełączenia newLineFocused",
 
 		ErrorOccurred:                     "Wystąpił błąd! Proszę go zgłosić na https://github.com/g-battaglia/lazy-apple-container/issues",
-		ConnectionFailed:                  "Błąd połączenia z Dockerem. Być może należy go zrestartować.",
-		UnattachableContainerError:        "Kontener nie obsługuje przyczepiania (attach). Musisz albo użyć flag '-it', albo `stdin_open: true, tty: true` w pliku docker-compose.yml.",
+		ConnectionFailed:                  "Błąd połączenia z Apple Container. Być może CLI 'container' nie jest zainstalowane.",
+		UnattachableContainerError:        "Kontener nie obsługuje przyczepiania (attach). Użyj 'exec shell' (klawisz 'E') aby otworzyć interaktywną powłokę.",
 		CannotAttachStoppedContainerError: "Nie można przyczepić się do zatrzymanego kontenera, należy go najpierw uruchomić (co można wykonać wciskając przycisk 'r')",
-		CannotAccessDockerSocketError:     "Nie udało się uzyskać dostępu do unix:///var/run/docker.sock\nUruchom program jako root lub przeczytaj https://docs.docker.com/install/linux/linux-postinstall/",
+		CannotAccessRuntimeError:          "Nie udało się połączyć z Apple Container.\nUpewnij się, że CLI 'container' jest zainstalowane i działa.",
 
 		Donate:  "Dotacja",
 		Confirm: "Potwierdź",
@@ -67,7 +67,7 @@ func polishSet() TranslationSet {
 		LogsTitle:                 "Logi",
 		ConfigTitle:               "Konfiguracja",
 		EnvTitle:                  "Env",
-		DockerComposeConfigTitle:  "Konfiguracja docker-compose",
+		ComposeConfigTitle:        "Konfiguracja kontenera",
 		TopTitle:                  "Top",
 		StatsTitle:                "Staty",
 		CreditsTitle:              "O",

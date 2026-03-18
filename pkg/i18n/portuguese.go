@@ -17,11 +17,11 @@ func portugueseSet() TranslationSet {
 		NoViewMachingNewLineFocusedSwitchStatement: "No view matching newLineFocused switch statement",
 
 		ErrorOccurred:                     "Um erro ocorreu! Por favor, crie uma issue em https://github.com/g-battaglia/lazy-apple-container/issues",
-		ConnectionFailed:                  "Falha na conexão com o cliente Docker. Você pode precisar reiniciar o seu cliente Docker",
-		UnattachableContainerError:        "O contêiner não suporta anexação. Você deve executar o serviço com a flag '-it' ou usar `stdin_open: true, tty: true` no arquivo docker-compose.yml",
-		WaitingForContainerInfo:           "Não é possível prosseguir até que o Docker forneça mais informações sobre o contêiner. Por favor, tente novamente em alguns momentos.",
+		ConnectionFailed:                  "Falha na conexão com o runtime Apple Container. Verifique se o CLI 'container' está instalado",
+		UnattachableContainerError:        "O contêiner não suporta anexação. Use 'exec shell' (tecla 'E') para abrir um shell interativo",
+		WaitingForContainerInfo:           "Não é possível prosseguir até que o Apple Container forneça mais informações sobre o contêiner. Por favor, tente novamente em alguns momentos.",
 		CannotAttachStoppedContainerError: "Você não pode anexar a um contêiner parado, você precisa iniciá-lo primeiro (o que você pode fazer com a tecla 'r') (sim, sou preguiçoso demais para fazer isso automaticamente para você) (aliás, bem legal que eu posso me comunicar diretamente com você na forma de uma mensagem de erro)",
-		CannotAccessDockerSocketError:     "Não é possível acessar o sôquete docker em: unix:///var/run/docker.sock\nExecute o lazyapple como root ou leia https://docs.docker.com/install/linux/linux-postinstall/",
+		CannotAccessRuntimeError:          "Não é possível conectar ao runtime Apple Container.\nVerifique se o CLI 'container' está instalado e funcionando.",
 		CannotKillChildError:              "Três segundos foram esperarados para que os processos filhos parassem. Pode haver um processo órfão que continua em execução em seu sistema.",
 
 		Donate:  "Doar",
@@ -95,7 +95,7 @@ func portugueseSet() TranslationSet {
 		LogsTitle:                 "Registros",
 		ConfigTitle:               "Config",
 		EnvTitle:                  "Env",
-		DockerComposeConfigTitle:  "Docker-Compose Config",
+		ComposeConfigTitle:        "Config Container",
 		TopTitle:                  "Topo",
 		StatsTitle:                "Estatísticas",
 		CreditsTitle:              "Sobre",
@@ -113,7 +113,7 @@ func portugueseSet() TranslationSet {
 		NoServices:   "Sem serviços",
 
 		ConfirmQuit:                 "Tem certeza que deseja sair?",
-		ConfirmUpProject:            "Tem certeza que deseja 'iniciar' seu projeto docker compose?",
+		ConfirmUpProject:            "Tem certeza que deseja iniciar este contêiner?",
 		MustForceToRemoveContainer:  "Você não pode remover um contêiner em execução a menos que o force. Deseja forçar?",
 		NotEnoughSpace:              "Sem espaço suficiente para renderizar os painéis",
 		ConfirmPruneImages:          "Tem certeza que deseja eliminar todas as imagens não utilizadas?",

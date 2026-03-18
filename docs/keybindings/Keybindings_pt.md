@@ -1,12 +1,12 @@
 _This file is auto-generated. To update, make the changes in the pkg/i18n directory and then run `go run scripts/cheatsheet/main.go generate` from the project root._
 
-# Lazydocker menu
+# Lazyapple menu
 
 ## Projeto
 
 <pre>
-  <kbd>e</kbd>: editar configuração do lazydocker
-  <kbd>o</kbd>: abrir configuração do lazydocker
+  <kbd>e</kbd>: editar configuração do lazyapple
+  <kbd>o</kbd>: abrir configuração do lazyapple
   <kbd>m</kbd>: ver logs
   <kbd>enter</kbd>: focar no painel principal
   <kbd>[</kbd>: aba anterior

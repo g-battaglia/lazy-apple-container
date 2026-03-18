@@ -11,10 +11,10 @@ func dutchSet() TranslationSet {
 		NoViewMachingNewLineFocusedSwitchStatement: "No view matching newLineFocused switch statement",
 
 		ErrorOccurred:                     "Er is iets fout gegaan! Zou je hier een issue aan willen maken: https://github.com/g-battaglia/lazy-apple-container/issues",
-		ConnectionFailed:                  "connectie naar de docker client mislukt. Het zou kunnen dat je de docker client moet herstarten",
-		UnattachableContainerError:        "Container heeft geen ondersteuning voor vastmaken. Je zou de service met het '-it' argument kunnen draaien of stop dit in je `stdin_open: true, tty: true` docker-compose.yml",
+		ConnectionFailed:                  "Verbinding met Apple Container runtime mislukt. Controleer of de 'container' CLI is geïnstalleerd",
+		UnattachableContainerError:        "Container heeft geen ondersteuning voor vastmaken. Gebruik 'exec shell' ('E' toets) om een interactieve shell te openen",
 		CannotAttachStoppedContainerError: "Je kan niet een vastgemaakte container stoppen, je moet het eerst starten (dit kan je doen met de 'r' toets) (ja ik ben te leu om dat voor je te doen automatisch)",
-		CannotAccessDockerSocketError:     "Kan de docker socket niet bereiken: unix:///var/run/docker.sock\nDraai lazyapple als root of lees https://docs.docker.com/install/linux/linux-postinstall/",
+		CannotAccessRuntimeError:          "Kan geen verbinding maken met Apple Container runtime.\nZorg ervoor dat de 'container' CLI is geïnstalleerd en werkt.",
 
 		Donate:  "Doneer",
 		Confirm: "Bevestigen",
@@ -68,7 +68,7 @@ func dutchSet() TranslationSet {
 		LogsTitle:                 "Logs",
 		ConfigTitle:               "Config",
 		EnvTitle:                  "Env",
-		DockerComposeConfigTitle:  "Docker-Compose Configuratie",
+		ComposeConfigTitle:        "Container Configuratie",
 		TopTitle:                  "Top",
 		StatsTitle:                "Stats",
 		CreditsTitle:              "Over",

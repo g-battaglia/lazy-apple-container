@@ -2,30 +2,14 @@
 
 ## Opening The User Config
 
-The location of the user config will differ depending on your OS. You can open it via lazydocker by opening the application, clicking on the 'project' panel at the top left and pressing 'o' (or pressing 'e' if your files open in vim).
+The location of the user config will differ depending on your OS. You can open it via lazyapple by opening the application, clicking on the 'containers' panel at the top left and pressing 'o' (or pressing 'e' if your files open in vim).
 
-Changes to the user config will only take place after closing and re-opening lazydocker
+Changes to the user config will only take place after closing and re-opening lazyapple
 
 ### Locations:
 
-- OSX: `~/Library/Application Support/jesseduffield/lazydocker/config.yml`
-- Linux: `~/.config/lazydocker/config.yml`
-- Windows: `C:\Users\<User>\AppData\Roaming\lazydocker\config.yml`
-
-JSON schema is available for `config.yml` so that IntelliSense in Visual Studio Code
-(completion and error checking) is automatically enabled when the [YAML Red Hat][yaml]
-extension is installed. However, note that automatic schema detection only works
-if your config file is in one of the standard paths mentioned above. If you
-override the path to the file, you can still make IntelliSense work by adding
-
-```yaml
-# yaml-language-server: $schema=https://json.schemastore.org/lazydocker.json
-```
-
-to the top of your config file or via [Visual Studio Code settings.json config][settings].
-
-[yaml]: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
-[settings]: https://github.com/redhat-developer/vscode-yaml#associating-a-schema-to-a-glob-pattern-via-yamlschemas
+- macOS: `~/Library/Application Support/jesseduffield/lazyapple/config.yml`
+- Linux: `~/.config/lazyapple/config.yml`
 
 ## Default:
 
@@ -64,24 +48,6 @@ logs:
   timestamps: false
   since: '60m' # set to '' to show all logs
   tail: '' # set to 200 to show last 200 lines of logs
-commandTemplates:
-  dockerCompose: docker compose # Determines the Docker Compose command to run, referred to as .DockerCompose in commandTemplates
-  restartService: '{{ .DockerCompose }} restart {{ .Service.Name }}'
-  up:  '{{ .DockerCompose }} up -d'
-  down: '{{ .DockerCompose }} down'
-  downWithVolumes: '{{ .DockerCompose }} down --volumes'
-  upService:  '{{ .DockerCompose }} up -d {{ .Service.Name }}'
-  startService: '{{ .DockerCompose }} start {{ .Service.Name }}'
-  stopService: '{{ .DockerCompose }} stop {{ .Service.Name }}'
-  serviceLogs: '{{ .DockerCompose }} logs --since=60m --follow {{ .Service.Name }}'
-  viewServiceLogs: '{{ .DockerCompose }} logs --follow {{ .Service.Name }}'
-  rebuildService: '{{ .DockerCompose }} up -d --build {{ .Service.Name }}'
-  recreateService: '{{ .DockerCompose }} up -d --force-recreate {{ .Service.Name }}'
-  allLogs: '{{ .DockerCompose }} logs --tail=300 --follow'
-  viewAlLogs: '{{ .DockerCompose }} logs'
-  dockerComposeConfig: '{{ .DockerCompose }} config'
-  checkDockerComposeConfig: '{{ .DockerCompose }} config --quiet'
-  serviceTop: '{{ .DockerCompose }} top {{ .Service.Name }}'
 oS:
   openCommand: open {{filename}}
   openLinkCommand: open {{link}}
@@ -94,8 +60,6 @@ stats:
       statPath: DerivedStats.MemoryPercentage
       color: green
 ```
-
-## To see what all of the config options mean, and what other options you can set, see [here](https://godoc.org/github.com/jesseduffield/lazydocker/pkg/config)
 
 ## Color Attributes:
 
@@ -124,14 +88,12 @@ customCommands:
   containers:
     - name: bash
       attach: true
-      command: 'docker exec -it {{ .Container.ID }} bash'
+      command: 'container exec {{ .Container.ID }} bash'
       serviceNames: []
 ```
 
 You may use the following go templates (such as `{{ .Container.ID }}` above) in your commands:
-- `{{ .DockerCompose }}`: the docker compose command (default: `docker-compose`)
-- [`{{ .Container }}`](https://pkg.go.dev/github.com/jesseduffield/lazydocker@v0.20.0/pkg/commands#Container) and its fields. For example: `{{ .Container.Container.ImageID }}`
-- [`{{ .Service }}`](https://pkg.go.dev/github.com/jesseduffield/lazydocker@v0.20.0/pkg/commands#Service) and its fields. For example: `{{ .Service.Name }}`
+- [`{{ .Container }}`](https://github.com/g-battaglia/lazy-apple-container/blob/apple-container/pkg/commands/container.go) and its fields. For example: `{{ .Container.ID }}`
 
 ## Replacements
 

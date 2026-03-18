@@ -17,11 +17,11 @@ func chineseSet() TranslationSet {
 		NoViewMachingNewLineFocusedSwitchStatement: "没有匹配 newLineFocused switch 语句的视图",
 
 		ErrorOccurred:                     "发生错误！请在 https://github.com/g-battaglia/lazy-apple-container/issues 上创建一个问题",
-		ConnectionFailed:                  "无法连接到 Docker 客户端。您可能需要重新启动 Docker 客户端",
-		UnattachableContainerError:        "容器不支持 attaching。您必须使用“-it”标志运行服务，或者在docker-compose.yml文件中使用`stdin_open: true，tty: true`",
-		WaitingForContainerInfo:           "在 Docker 给我们更多关于容器的信息之前，无法继续。请几分钟后重试。",
+		ConnectionFailed:                  "无法连接到 Apple Container 运行时。您可能需要检查 'container' CLI 是否已安装",
+		UnattachableContainerError:        "容器不支持 attaching。请使用 'exec shell'（按 'E' 键）打开交互式 shell",
+		WaitingForContainerInfo:           "在 Apple Container 给我们更多关于容器的信息之前，无法继续。请几分钟后重试。",
 		CannotAttachStoppedContainerError: "您不能 attach 到已停止的容器，您需要先启动它（您可以用 'r' 键来执行此操作）（是的，我懒得为您自动执行此操作）（很酷的是，我可以通过错误消息与您进行一对一的通讯）",
-		CannotAccessDockerSocketError:     "无法访问 Docker 套接字：unix:///var/run/docker.sock\n请以 root 用户身份运行 lazyapple 或阅读https://docs.docker.com/install/linux/linux-postinstall/",
+		CannotAccessRuntimeError:          "无法连接到 Apple Container 运行时。\n请确保 'container' CLI 已安装并正常工作。",
 		CannotKillChildError:              "等待三秒钟以停止子进程。可能有一个孤儿进程在您的系统上继续运行。",
 
 		Donate:  "捐赠",
@@ -95,7 +95,7 @@ func chineseSet() TranslationSet {
 		LogsTitle:                 "日志",
 		ConfigTitle:               "配置",
 		EnvTitle:                  "环境变量",
-		DockerComposeConfigTitle:  "Docker-Compose配置",
+		ComposeConfigTitle:        "容器配置",
 		TopTitle:                  "系统资源管理",
 		StatsTitle:                "统计信息",
 		CreditsTitle:              "关于我们",
@@ -113,7 +113,7 @@ func chineseSet() TranslationSet {
 		NoServices:   "没有服务",
 
 		ConfirmQuit:                "您确定要退出吗？",
-		ConfirmUpProject:           "您确定要“up”的docker compose项目吗？",
+		ConfirmUpProject:           "您确定要“up”的Apple Container项目吗？",
 		MustForceToRemoveContainer: "您无法删除正在运行的容器，除非您强制执行。您想强制执行吗？",
 		NotEnoughSpace:             "空间不足，无法渲染面板",
 		ConfirmPruneImages:         "您确定要删除所有未使用的镜像吗？",

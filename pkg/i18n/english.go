@@ -24,7 +24,7 @@ type TranslationSet struct {
 	UnattachableContainerError                 string
 	WaitingForContainerInfo                    string
 	CannotAttachStoppedContainerError          string
-	CannotAccessDockerSocketError              string
+	CannotAccessRuntimeError                   string
 	CannotKillChildError                       string
 
 	Donate                      string
@@ -113,7 +113,7 @@ type TranslationSet struct {
 	LogsTitle                   string
 	ConfigTitle                 string
 	EnvTitle                    string
-	DockerComposeConfigTitle    string
+	ComposeConfigTitle          string
 	StatsTitle                  string
 	CreditsTitle                string
 	ContainerConfigTitle        string
@@ -137,13 +137,13 @@ type TranslationSet struct {
 	FocusVolumes    string
 	FocusNetworks   string
 
-	Kill              string
-	KillingStatus     string
-	RemoveContainer   string
+	Kill                string
+	KillingStatus       string
+	RemoveContainer     string
 	ContainerNotRunning string
-	NoIp              string
-	NoPorts           string
-	NoStats           string
+	NoIp                string
+	NoPorts             string
+	NoStats             string
 }
 
 func englishSet() TranslationSet {
@@ -163,11 +163,11 @@ func englishSet() TranslationSet {
 		NoViewMachingNewLineFocusedSwitchStatement: "No view matching newLineFocused switch statement",
 
 		ErrorOccurred:                     "An error occurred! Please create an issue at https://github.com/g-battaglia/lazy-apple-container/issues",
-		ConnectionFailed:                  "connection to docker client failed. You may need to restart the docker client",
-		UnattachableContainerError:        "Container does not support attaching. You must either run the service with the '-it' flag or use `stdin_open: true, tty: true` in the docker-compose.yml file",
-		WaitingForContainerInfo:           "Cannot proceed until docker gives us more information about the container. Please retry in a few moments.",
+		ConnectionFailed:                  "connection to Apple Container runtime failed. You may need to check that the 'container' CLI is installed",
+		UnattachableContainerError:        "Container does not support attaching. Use exec shell ('E' key) to open an interactive shell instead",
+		WaitingForContainerInfo:           "Cannot proceed until Apple Container gives us more information about the container. Please retry in a few moments.",
 		CannotAttachStoppedContainerError: "You cannot attach to a stopped container, you need to start it first (which you can actually do with the 'r' key) (yes I'm too lazy to do this automatically for you) (pretty cool that I get to communicate one-on-one with you in the form of an error message though)",
-		CannotAccessDockerSocketError:     "Can't access docker socket at: unix:///var/run/docker.sock\nRun lazyapple as root or read https://docs.docker.com/install/linux/linux-postinstall/",
+		CannotAccessRuntimeError:          "Can't connect to the Apple Container runtime.\nMake sure the 'container' CLI is installed and working.",
 		CannotKillChildError:              "Waited three seconds for child process to stop. There may be an orphan process that continues to run on your system.",
 
 		Donate:  "Donate",
@@ -241,7 +241,7 @@ func englishSet() TranslationSet {
 		LogsTitle:                   "Logs",
 		ConfigTitle:                 "Config",
 		EnvTitle:                    "Env",
-		DockerComposeConfigTitle:    "Docker-Compose Config",
+		ComposeConfigTitle:          "Container Config",
 		TopTitle:                    "Top",
 		StatsTitle:                  "Stats",
 		CreditsTitle:                "About",
@@ -260,7 +260,7 @@ func englishSet() TranslationSet {
 		NoServices:   "No services",
 
 		ConfirmQuit:                 "Are you sure you want to quit?",
-		ConfirmUpProject:            "Are you sure you want to 'up' your docker compose project?",
+		ConfirmUpProject:            "Are you sure you want to start this container?",
 		MustForceToRemoveContainer:  "You cannot remove a running container unless you force it. Do you want to force it?",
 		NotEnoughSpace:              "Not enough space to render panels",
 		ConfirmPruneImages:          "Are you sure you want to prune all unused images?",
@@ -288,12 +288,12 @@ func englishSet() TranslationSet {
 		FocusVolumes:    "focus volumes panel",
 		FocusNetworks:   "focus networks panel",
 
-		Kill:               "kill",
-		KillingStatus:      "killing",
-		RemoveContainer:    "remove container",
+		Kill:                "kill",
+		KillingStatus:       "killing",
+		RemoveContainer:     "remove container",
 		ContainerNotRunning: "container is not running",
-		NoIp:               "n/a",
-		NoPorts:            "n/a",
-		NoStats:            "No stats available",
+		NoIp:                "n/a",
+		NoPorts:             "n/a",
+		NoStats:             "No stats available",
 	}
 }

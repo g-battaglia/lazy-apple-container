@@ -84,7 +84,7 @@ func (c *OSCommand) RunExecutable(cmd *exec.Cmd) error {
 	return err
 }
 
-// ExecutableFromString takes a string like `docker ps -a` and returns an executable command for it
+// ExecutableFromString takes a string like `container list` and returns an executable command for it
 func (c *OSCommand) ExecutableFromString(commandStr string) *exec.Cmd {
 	splitCmd := str.ToArgv(commandStr)
 	return c.NewCmd(splitCmd[0], splitCmd[1:]...)
@@ -291,9 +291,9 @@ func (c *OSCommand) RunPreparedCommand(cmd *exec.Cmd) error {
 	return nil
 }
 
-// GetLazydockerPath returns the path of the currently executed file
-func (c *OSCommand) GetLazydockerPath() string {
-	ex, err := os.Executable() // get the executable path for docker to use
+// GetLazyapplePath returns the path of the currently executed file
+func (c *OSCommand) GetLazyapplePath() string {
+	ex, err := os.Executable() // get the executable path
 	if err != nil {
 		ex = os.Args[0] // fallback to the first call argument if needed
 	}
@@ -369,7 +369,7 @@ func (c *OSCommand) Kill(cmd *exec.Cmd) error {
 	return kill.Kill(cmd)
 }
 
-// PrepareForChildren sets Setpgid to true on the cmd, so that when we run it as a subprocess, we can kill its group rather than the process itself. This is because some commands, like `docker-compose logs` spawn multiple children processes, and killing the parent process isn't sufficient for killing those child processes. We set the group id here, and then in subprocess.go we check if the group id is set and if so, we kill the whole group rather than just the one process.
+// PrepareForChildren sets Setpgid to true on the cmd, so that when we run it as a subprocess, we can kill its group rather than the process itself. This is because some commands, like `container logs` spawn multiple children processes, and killing the parent process isn't sufficient for killing those child processes. We set the group id here, and then in subprocess.go we check if the group id is set and if so, we kill the whole group rather than just the one process.
 func (c *OSCommand) PrepareForChildren(cmd *exec.Cmd) {
 	kill.PrepareForChildren(cmd)
 }

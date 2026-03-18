@@ -11,10 +11,10 @@ func germanSet() TranslationSet {
 		NoViewMachingNewLineFocusedSwitchStatement: "No view matching newLineFocused switch statement",
 
 		ErrorOccurred:                     "Es ist ein Fehler aufgetreten! Bitte erstelle ein Issue hier: https://github.com/g-battaglia/lazy-apple-container/issues",
-		ConnectionFailed:                  "Verbindung zum Docker Client fehlgeschlagen. Du musst ggf. den Docker Client neustarten.",
-		UnattachableContainerError:        "Der Container bietet keine Unterstützung für das Anbinden. Du musst den Dienst entweder mit der '-it' Flagge benutzen oder `stdin_open: true, tty: true` in der docker-compose.yml Datei setzen.",
+		ConnectionFailed:                  "Verbindung zur Apple Container Laufzeitumgebung fehlgeschlagen. Überprüfe, ob das 'container' CLI installiert ist.",
+		UnattachableContainerError:        "Der Container bietet keine Unterstützung für das Anbinden. Nutze 'exec shell' ('E' Taste) um eine interaktive Shell zu öffnen.",
 		CannotAttachStoppedContainerError: "Du kannst keinen angehaltenen Container anbinden. Du musst ihn erst starten (was du tun kannst, indem du 'r' drückst), (ja, ich bin zu faul um das zu automatisieren) (aber ist schon cool, dass ich so eine Konversation durch eine Fehlermeldung mit dir führen kann)",
-		CannotAccessDockerSocketError:     "Kann nicht auf den Socket zugreifen: unix:///var/run/docker.sock\nFühre lazyapple als root aus oder lese https://docs.docker.com/install/linux/linux-postinstall/",
+		CannotAccessRuntimeError:          "Kann keine Verbindung zur Apple Container Laufzeitumgebung herstellen.\nStelle sicher, dass das 'container' CLI installiert ist und funktioniert.",
 
 		Donate:  "Spenden",
 		Confirm: "Bestätigen",
@@ -67,7 +67,7 @@ func germanSet() TranslationSet {
 		LogsTitle:                 "Protokoll",
 		ConfigTitle:               "Konfiguration",
 		EnvTitle:                  "Env",
-		DockerComposeConfigTitle:  "Docker-Compose Konfiguration",
+		ComposeConfigTitle:        "Container Konfiguration",
 		TopTitle:                  "Top",
 		StatsTitle:                "Statistiken",
 		CreditsTitle:              "Über Uns",
