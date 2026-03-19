@@ -53,16 +53,6 @@ func (c *Container) Stop() error {
 	return c.Client.StopContainer(c.ID)
 }
 
-func (c *Container) Pause() error {
-	c.Log.Warn(fmt.Sprintf("pausing container %s", c.Name))
-	return errors.New("pause is not supported by Apple Container")
-}
-
-func (c *Container) Unpause() error {
-	c.Log.Warn(fmt.Sprintf("unpausing container %s", c.Name))
-	return errors.New("unpause is not supported by Apple Container")
-}
-
 func (c *Container) Restart() error {
 	c.Log.Warn(fmt.Sprintf("restarting container %s", c.Name))
 	return c.Client.RestartContainer(c.ID)

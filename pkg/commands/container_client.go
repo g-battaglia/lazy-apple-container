@@ -15,11 +15,11 @@ import (
 )
 
 type ContainerClient struct {
-	Log        *logrus.Entry
-	OSCommand  *OSCommand
-	Tr         *i18n.TranslationSet
-	Config     *config.AppConfig
-	ErrorChan  chan error
+	Log       *logrus.Entry
+	OSCommand *OSCommand
+	Tr        *i18n.TranslationSet
+	Config    *config.AppConfig
+	ErrorChan chan error
 
 	ContainerMutex deadlock.Mutex
 	ImageMutex     deadlock.Mutex
@@ -578,10 +578,6 @@ func (c *ContainerClient) NewCommandObject(obj CommandObject) CommandObject {
 	return obj
 }
 
-func (c *ContainerClient) RefreshContainersAndServices(currentContainers []*Container) ([]*Container, error) {
-	return c.RefreshContainers(currentContainers), nil
-}
-
 func (c *ContainerClient) RefreshContainers(currentContainers []*Container) []*Container {
 	c.ContainerMutex.Lock()
 	defer c.ContainerMutex.Unlock()
@@ -625,8 +621,4 @@ func (c *ContainerClient) RefreshContainers(currentContainers []*Container) []*C
 	}
 
 	return containers
-}
-
-func (c *ContainerClient) GetProjectNames(containers []*Container) []string {
-	return []string{}
 }

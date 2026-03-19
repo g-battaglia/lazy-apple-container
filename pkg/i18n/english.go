@@ -3,7 +3,6 @@ package i18n
 // TranslationSet is a set of localised strings for a given language
 type TranslationSet struct {
 	NotEnoughSpace                             string
-	ProjectTitle                               string
 	MainTitle                                  string
 	GlobalTitle                                string
 	Navigate                                   string
@@ -18,7 +17,6 @@ type TranslationSet struct {
 	OpenConfig                                 string
 	EditConfig                                 string
 	ConfirmQuit                                string
-	ConfirmUpProject                           string
 	ErrorOccurred                              string
 	ConnectionFailed                           string
 	UnattachableContainerError                 string
@@ -44,30 +42,16 @@ type TranslationSet struct {
 	RestartingStatus            string
 	StartingStatus              string
 	StoppingStatus              string
-	UppingProjectStatus         string
-	UppingServiceStatus         string
-	PausingStatus               string
 	RemovingStatus              string
-	DowningStatus               string
 	RunningCustomCommandStatus  string
 	RunningBulkCommandStatus    string
-	RemoveService               string
-	UpService                   string
 	Stop                        string
-	Pause                       string
 	Restart                     string
-	Down                        string
-	DownWithVolumes             string
 	Start                       string
-	Rebuild                     string
-	Recreate                    string
 	PreviousContext             string
 	NextContext                 string
 	Attach                      string
 	ViewLogs                    string
-	UpProject                   string
-	DownProject                 string
-	ServicesTitle               string
 	ContainersTitle             string
 	StandaloneContainersTitle   string
 	TopTitle                    string
@@ -79,7 +63,6 @@ type TranslationSet struct {
 	NoImages                    string
 	NoVolumes                   string
 	NoNetworks                  string
-	NoServices                  string
 	RemoveImage                 string
 	RemoveVolume                string
 	RemoveNetwork               string
@@ -97,7 +80,6 @@ type TranslationSet struct {
 	ConfirmPruneVolumes         string
 	ConfirmPruneNetworks        string
 	PruningStatus               string
-	StopService                 string
 	PressEnterToReturn          string
 	DetachFromContainerShortCut string
 	StopAllContainers           string
@@ -110,18 +92,15 @@ type TranslationSet struct {
 	OpenInBrowser               string
 	SortContainersByState       string
 
-	LogsTitle                   string
-	ConfigTitle                 string
-	EnvTitle                    string
-	ComposeConfigTitle          string
-	StatsTitle                  string
-	CreditsTitle                string
-	ContainerConfigTitle        string
-	ContainerEnvTitle           string
-	NothingToDisplay            string
-	NoContainerForService       string
-	CannotDisplayEnvVariables   string
-	CannotManageNonLocalService string
+	LogsTitle                 string
+	ConfigTitle               string
+	EnvTitle                  string
+	StatsTitle                string
+	CreditsTitle              string
+	ContainerConfigTitle      string
+	ContainerEnvTitle         string
+	NothingToDisplay          string
+	CannotDisplayEnvVariables string
 
 	No  string
 	Yes string
@@ -130,8 +109,6 @@ type TranslationSet struct {
 	LcPrevScreenMode string
 	FilterPrompt     string
 
-	FocusProjects   string
-	FocusServices   string
 	FocusContainers string
 	FocusImages     string
 	FocusVolumes    string
@@ -153,10 +130,6 @@ func englishSet() TranslationSet {
 		RestartingStatus:           "restarting",
 		StartingStatus:             "starting",
 		StoppingStatus:             "stopping",
-		UppingServiceStatus:        "upping service",
-		UppingProjectStatus:        "upping project",
-		DowningStatus:              "downing",
-		PausingStatus:              "pausing",
 		RunningCustomCommandStatus: "running custom command",
 		RunningBulkCommandStatus:   "running bulk command",
 
@@ -190,22 +163,13 @@ func englishSet() TranslationSet {
 		HideStopped:                 "hide/show stopped containers",
 		ForceRemove:                 "force remove",
 		RemoveWithVolumes:           "remove with volumes",
-		RemoveService:               "remove containers",
-		UpService:                   "up service",
 		Stop:                        "stop",
-		Pause:                       "pause",
 		Restart:                     "restart",
-		Down:                        "down project",
-		DownWithVolumes:             "down project with volumes",
 		Start:                       "start",
-		Rebuild:                     "rebuild",
-		Recreate:                    "recreate",
 		PreviousContext:             "previous tab",
 		NextContext:                 "next tab",
 		Attach:                      "attach",
 		ViewLogs:                    "view logs",
-		UpProject:                   "up project",
-		DownProject:                 "down project",
 		RemoveImage:                 "remove image",
 		RemoveVolume:                "remove volume",
 		RemoveNetwork:               "remove network",
@@ -226,41 +190,34 @@ func englishSet() TranslationSet {
 		OpenInBrowser:               "open in browser (first port is http)",
 		SortContainersByState:       "sort containers by state",
 
-		GlobalTitle:                 "Global",
-		MainTitle:                   "Main",
-		ProjectTitle:                "Project",
-		ServicesTitle:               "Services",
-		ContainersTitle:             "Containers",
-		StandaloneContainersTitle:   "Standalone Containers",
-		ImagesTitle:                 "Images",
-		VolumesTitle:                "Volumes",
-		NetworksTitle:               "Networks",
-		CustomCommandTitle:          "Custom Command:",
-		BulkCommandTitle:            "Bulk Command:",
-		ErrorTitle:                  "Error",
-		LogsTitle:                   "Logs",
-		ConfigTitle:                 "Config",
-		EnvTitle:                    "Env",
-		ComposeConfigTitle:          "Container Config",
-		TopTitle:                    "Top",
-		StatsTitle:                  "Stats",
-		CreditsTitle:                "About",
-		ContainerConfigTitle:        "Container Config",
-		ContainerEnvTitle:           "Container Env",
-		NothingToDisplay:            "Nothing to display",
-		NoContainerForService:       "No logs to show; service is not associated with a container",
-		CannotDisplayEnvVariables:   "Something went wrong while displaying environment variables",
-		CannotManageNonLocalService: "This service belongs to a different compose project. Run lazyapple from that project's directory to manage it.",
+		GlobalTitle:               "Global",
+		MainTitle:                 "Main",
+		ContainersTitle:           "Containers",
+		StandaloneContainersTitle: "Standalone Containers",
+		ImagesTitle:               "Images",
+		VolumesTitle:              "Volumes",
+		NetworksTitle:             "Networks",
+		CustomCommandTitle:        "Custom Command:",
+		BulkCommandTitle:          "Bulk Command:",
+		ErrorTitle:                "Error",
+		LogsTitle:                 "Logs",
+		ConfigTitle:               "Config",
+		EnvTitle:                  "Env",
+		TopTitle:                  "Top",
+		StatsTitle:                "Stats",
+		CreditsTitle:              "About",
+		ContainerConfigTitle:      "Container Config",
+		ContainerEnvTitle:         "Container Env",
+		NothingToDisplay:          "Nothing to display",
+		CannotDisplayEnvVariables: "Something went wrong while displaying environment variables",
 
 		NoContainers: "No containers",
 		NoContainer:  "No container",
 		NoImages:     "No images",
 		NoVolumes:    "No volumes",
 		NoNetworks:   "No networks",
-		NoServices:   "No services",
 
 		ConfirmQuit:                 "Are you sure you want to quit?",
-		ConfirmUpProject:            "Are you sure you want to start this container?",
 		MustForceToRemoveContainer:  "You cannot remove a running container unless you force it. Do you want to force it?",
 		NotEnoughSpace:              "Not enough space to render panels",
 		ConfirmPruneImages:          "Are you sure you want to prune all unused images?",
@@ -269,7 +226,6 @@ func englishSet() TranslationSet {
 		ConfirmRemoveContainers:     "Are you sure you want to remove all containers?",
 		ConfirmPruneVolumes:         "Are you sure you want to prune all unused volumes?",
 		ConfirmPruneNetworks:        "Are you sure you want to prune all unused networks?",
-		StopService:                 "Are you sure you want to stop this service's containers?",
 		StopContainer:               "Are you sure you want to stop this container?",
 		PressEnterToReturn:          "Press enter to return to lazyapple (this prompt can be disabled in your config by setting `gui.returnImmediately: true`)",
 		DetachFromContainerShortCut: "By default, to detach from the container press ctrl-p then ctrl-q",
@@ -281,8 +237,6 @@ func englishSet() TranslationSet {
 		LcPrevScreenMode: "prev screen mode",
 		FilterPrompt:     "filter",
 
-		FocusProjects:   "focus projects panel",
-		FocusServices:   "focus services panel",
 		FocusContainers: "focus containers panel",
 		FocusImages:     "focus images panel",
 		FocusVolumes:    "focus volumes panel",

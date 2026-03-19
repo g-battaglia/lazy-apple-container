@@ -121,11 +121,6 @@ func (c *ContainerCommand) CreateClientStatMonitor(container *Container) {
 	container.MonitoringStats = false
 }
 
-func (c *ContainerCommand) RefreshContainersAndServices(currentContainers []*Container) ([]*Container, error) {
-	containers := c.RefreshContainers(currentContainers)
-	return containers, nil
-}
-
 func (c *ContainerCommand) RefreshContainers(currentContainers []*Container) []*Container {
 	return c.Client.RefreshContainers(currentContainers)
 }
@@ -176,8 +171,4 @@ func (c *ContainerCommand) SystemStop() error {
 
 func (c *ContainerCommand) BuildImage(contextDir string, dockerfile string, tag string) error {
 	return c.Client.BuildImage(contextDir, dockerfile, tag)
-}
-
-func (c *ContainerCommand) GetProjectNames(containers []*Container) []string {
-	return []string{}
 }

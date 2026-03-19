@@ -387,7 +387,3 @@ func (gui *Gui) handleContainersOpenInBrowserCommand(g *gocui.Gui, v *gocui.View
 
 	return nil
 }
-
-func (gui *Gui) PauseContainer(container *commands.Container) error {
-	return gui.createErrorPanel("Pause is not supported by Apple Container")
-}
