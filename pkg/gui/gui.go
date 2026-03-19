@@ -236,6 +236,12 @@ func (gui *Gui) Run() error {
 		gui.goEvery(time.Millisecond*30, gui.reRenderMain)
 		gui.goEvery(time.Millisecond*1000, gui.renderContainers)
 		gui.goEvery(time.Millisecond*1000, gui.checkForContextChange)
+		// Poll for container/image/volume/network changes since Apple Container
+		// has no events API
+		gui.goEvery(time.Millisecond*2000, func() error {
+			throttledRefresh.Trigger()
+			return nil
+		})
 	}()
 
 	err = g.MainLoop()

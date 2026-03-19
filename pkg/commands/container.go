@@ -106,27 +106,26 @@ func (c *Container) Top(ctx context.Context) ([][]string, []string, error) {
 		return nil, nil, fmt.Errorf("container is not running")
 	}
 
-	args := []string{"exec", c.ID, "ps", "aux"}
-	cmd := exec.CommandContext(ctx, "container", args...)
-	output, err := cmd.Output()
+	stats, err := c.Client.StatsContainer(c.ID, true)
 	if err != nil {
-		if ctx.Err() != nil {
-			return nil, nil, ctx.Err()
-		}
 		return nil, nil, err
 	}
 
-	lines := strings.Split(strings.TrimSpace(string(output)), "\n")
-	if len(lines) == 0 {
-		return nil, nil, nil
+	if len(stats) == 0 {
+		return nil, nil, fmt.Errorf("no stats available")
 	}
 
-	titles := strings.Fields(lines[0])
-	var processes [][]string
-	for _, line := range lines[1:] {
-		if strings.TrimSpace(line) != "" {
-			processes = append(processes, strings.Fields(line))
-		}
+	s := stats[0]
+	titles := []string{"METRIC", "VALUE"}
+	processes := [][]string{
+		{"CPU Usage", fmt.Sprintf("%d µs", s.CPUUsageUsec)},
+		{"Memory Usage", utils.FormatBinaryBytes(int(s.MemoryUsageBytes))},
+		{"Memory Limit", utils.FormatBinaryBytes(int(s.MemoryLimitBytes))},
+		{"Network RX", utils.FormatBinaryBytes(int(s.NetworkRxBytes))},
+		{"Network TX", utils.FormatBinaryBytes(int(s.NetworkTxBytes))},
+		{"Block Read", utils.FormatBinaryBytes(int(s.BlockReadBytes))},
+		{"Block Write", utils.FormatBinaryBytes(int(s.BlockWriteBytes))},
+		{"Processes", fmt.Sprintf("%d", s.NumProcesses)},
 	}
 
 	return processes, titles, nil
