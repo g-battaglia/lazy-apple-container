@@ -1,12 +1,14 @@
-# goreleaser config for lazyapple
+# goreleaser v2 config for lazyapple
 # See https://goreleaser.com for documentation
+version: 2
+
 env:
   - CGO_ENABLED=0
   - GOFLAGS=-mod=vendor
-  - GO111MODULE=auto
 
 builds:
   - id: binary
+    binary: lazyapple
     goos:
       - darwin
     goarch:
@@ -17,8 +19,8 @@ builds:
 archives:
   - builds:
       - binary
-    replacements:
-      darwin: Darwin
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_Darwin_{{ .Arch }}
 
 checksum:
   name_template: "checksums.txt"
@@ -35,7 +37,7 @@ changelog:
       - "^bump"
 
 brews:
-  - tap:
+  - repository:
       owner: g-battaglia
       name: homebrew-lazyapple
 
