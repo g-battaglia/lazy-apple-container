@@ -102,11 +102,17 @@ func (c *Container) getShell() string {
 }
 
 func (c *Container) Top(ctx context.Context) ([][]string, []string, error) {
-	cmd := c.Client.ExecContainer(c.ID, ExecOptions{
-		Command: []string{"ps", "aux"},
-	})
+	if c.AppleContainer.Status != "running" {
+		return nil, nil, fmt.Errorf("container is not running")
+	}
+
+	args := []string{"exec", c.ID, "ps", "aux"}
+	cmd := exec.CommandContext(ctx, "container", args...)
 	output, err := cmd.Output()
 	if err != nil {
+		if ctx.Err() != nil {
+			return nil, nil, ctx.Err()
+		}
 		return nil, nil, err
 	}
 

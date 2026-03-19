@@ -8,29 +8,29 @@ import (
 
 	throttle "github.com/boz/go-throttle"
 	"github.com/jesseduffield/gocui"
-	lcUtils "github.com/jesseduffield/lazycore/pkg/utils"
 	"github.com/jesseduffield/lazycontainer/pkg/commands"
 	"github.com/jesseduffield/lazycontainer/pkg/config"
 	"github.com/jesseduffield/lazycontainer/pkg/gui/panels"
 	"github.com/jesseduffield/lazycontainer/pkg/gui/types"
 	"github.com/jesseduffield/lazycontainer/pkg/i18n"
 	"github.com/jesseduffield/lazycontainer/pkg/tasks"
+	lcUtils "github.com/jesseduffield/lazycore/pkg/utils"
 	"github.com/sasha-s/go-deadlock"
 	"github.com/sirupsen/logrus"
 )
 
 type Gui struct {
-	g               *gocui.Gui
-	Log             *logrus.Entry
-	ContainerCmd    *commands.ContainerCommand
-	OSCommand       *commands.OSCommand
-	State           guiState
-	Config          *config.AppConfig
-	Tr              *i18n.TranslationSet
-	statusManager   *statusManager
-	taskManager     *tasks.TaskManager
-	ErrorChan       chan error
-	Views           Views
+	g             *gocui.Gui
+	Log           *logrus.Entry
+	ContainerCmd  *commands.ContainerCommand
+	OSCommand     *commands.OSCommand
+	State         guiState
+	Config        *config.AppConfig
+	Tr            *i18n.TranslationSet
+	statusManager *statusManager
+	taskManager   *tasks.TaskManager
+	ErrorChan     chan error
+	Views         Views
 
 	PauseBackgroundThreads bool
 
@@ -381,7 +381,7 @@ func (gui *Gui) monitorContainerStats(ctx context.Context) {
 			return
 		case <-ticker.C:
 			for _, container := range gui.Panels.Containers.List.GetAllItems() {
-				if !container.MonitoringStats {
+				if !container.MonitoringStats && container.GetStatus() == "running" {
 					go gui.ContainerCmd.CreateClientStatMonitor(container)
 				}
 			}

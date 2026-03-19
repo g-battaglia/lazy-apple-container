@@ -39,7 +39,7 @@ func (s *ContainerStats) CalculateContainerCPUPercentage() float64 {
 	if cpuDelta < 0 {
 		cpuDelta = s.CPUUsageUsec
 	}
-	value := float64(cpuDelta*1000000) / float64(s.TimeDeltaUsec)
+	value := float64(cpuDelta) * 100.0 / float64(s.TimeDeltaUsec)
 	if math.IsNaN(value) || math.IsInf(value, 0) {
 		return 0
 	}

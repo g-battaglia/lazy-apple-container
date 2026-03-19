@@ -13,16 +13,16 @@ import (
 )
 
 type ContainerCommand struct {
-	Log             *logrus.Entry
-	OSCommand       *OSCommand
-	Tr              *i18n.TranslationSet
-	Config          *config.AppConfig
-	Client          *ContainerClient
-	ErrorChan       chan error
-	ContainerMutex  deadlock.Mutex
-	ImageMutex      deadlock.Mutex
-	VolumeMutex     deadlock.Mutex
-	NetworkMutex    deadlock.Mutex
+	Log            *logrus.Entry
+	OSCommand      *OSCommand
+	Tr             *i18n.TranslationSet
+	Config         *config.AppConfig
+	Client         *ContainerClient
+	ErrorChan      chan error
+	ContainerMutex deadlock.Mutex
+	ImageMutex     deadlock.Mutex
+	VolumeMutex    deadlock.Mutex
+	NetworkMutex   deadlock.Mutex
 
 	Closers []io.Closer
 }
@@ -40,13 +40,13 @@ func NewContainerCommand(log *logrus.Entry, osCommand *OSCommand, tr *i18n.Trans
 	}
 
 	containerCommand := &ContainerCommand{
-		Log:        log,
-		OSCommand:  osCommand,
-		Tr:         tr,
-		Config:     config,
-		Client:     client,
-		ErrorChan:  errorChan,
-		Closers:    []io.Closer{client},
+		Log:       log,
+		OSCommand: osCommand,
+		Tr:        tr,
+		Config:    config,
+		Client:    client,
+		ErrorChan: errorChan,
+		Closers:   []io.Closer{client},
 	}
 
 	return containerCommand, nil
@@ -69,8 +69,16 @@ func (c *ContainerCommand) CreateClientStatMonitor(container *Container) {
 	ticker := time.NewTicker(time.Second)
 	defer ticker.Stop()
 
+	consecutiveFailures := 0
+
 	for range ticker.C {
 		if !container.MonitoringStats {
+			return
+		}
+
+		// Stop monitoring if container is not running
+		if container.GetStatus() != "running" {
+			container.MonitoringStats = false
 			return
 		}
 
@@ -80,8 +88,16 @@ func (c *ContainerCommand) CreateClientStatMonitor(container *Container) {
 		stats, err := c.Client.StatsContainer(container.ID, true)
 		if err != nil {
 			c.Log.Error(err)
+			consecutiveFailures++
+			// Give up after 5 consecutive failures (container likely stopped/removed)
+			if consecutiveFailures >= 5 {
+				container.MonitoringStats = false
+				return
+			}
 			continue
 		}
+
+		consecutiveFailures = 0
 
 		if len(stats) > 0 {
 			containerStats := ConvertAppleStatsToContainerStats(stats[0], prevStats, timeDelta)
