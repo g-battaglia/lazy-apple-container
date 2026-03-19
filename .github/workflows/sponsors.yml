@@ -16,7 +16,7 @@ jobs:
         with:
           token: ${{ secrets.TOKEN_GITHUB }}
           file: "README.md"
-        if: ${{ github.repository == 'jesseduffield/lazydocker' }}
+        if: ${{ github.repository == 'g-battaglia/lazy-apple-container' }}
 
       - name: Create Pull Request 🚀
         uses: peter-evans/create-pull-request@v6

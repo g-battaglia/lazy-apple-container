@@ -2,24 +2,11 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
 
 # Lazyapple menu
 
-## Projekt
-
-<pre>
-  <kbd>e</kbd>: edytuj konfigurację
-  <kbd>o</kbd>: otwórz konfigurację
-  <kbd>m</kbd>: pokaż logi
-  <kbd>enter</kbd>: skup na głównym panelu
-  <kbd>[</kbd>: poprzednia zakładka
-  <kbd>]</kbd>: następna zakładka
-  <kbd>/</kbd>: filter list
-</pre>
-
 ## Kontenery
 
 <pre>
   <kbd>d</kbd>: usuń
   <kbd>e</kbd>: hide/show stopped containers
-  <kbd>p</kbd>: pause
   <kbd>s</kbd>: zatrzymaj
   <kbd>r</kbd>: restartuj
   <kbd>a</kbd>: przyczep
@@ -28,30 +15,7 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
   <kbd>c</kbd>: wykonaj predefiniowaną własną komende
   <kbd>b</kbd>: view bulk commands
   <kbd>w</kbd>: open in browser (first port is http)
-  <kbd>enter</kbd>: skup na głównym panelu
-  <kbd>[</kbd>: poprzednia zakładka
-  <kbd>]</kbd>: następna zakładka
-  <kbd>/</kbd>: filter list
-</pre>
-
-## Serwisy
-
-<pre>
-  <kbd>u</kbd>: up service
-  <kbd>d</kbd>: usuń kontenery
-  <kbd>s</kbd>: zatrzymaj
-  <kbd>p</kbd>: pause
-  <kbd>r</kbd>: restartuj
-  <kbd>S</kbd>: start
-  <kbd>a</kbd>: przyczep
-  <kbd>m</kbd>: pokaż logi
-  <kbd>U</kbd>: up project
-  <kbd>D</kbd>: down project
-  <kbd>R</kbd>: pokaż opcje restartu
-  <kbd>c</kbd>: wykonaj predefiniowaną własną komende
-  <kbd>b</kbd>: view bulk commands
-  <kbd>E</kbd>: exec shell
-  <kbd>w</kbd>: open in browser (first port is http)
+  <kbd>k</kbd>: kill
   <kbd>enter</kbd>: skup na głównym panelu
   <kbd>[</kbd>: poprzednia zakładka
   <kbd>]</kbd>: następna zakładka
@@ -105,10 +69,8 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
 <pre>
   <kbd>+</kbd>: next screen mode (normal/half/fullscreen)
   <kbd>_</kbd>: prev screen mode
-  <kbd>1</kbd>: focus projects panel
-  <kbd>2</kbd>: focus services panel
-  <kbd>3</kbd>: focus containers panel
-  <kbd>4</kbd>: focus images panel
-  <kbd>5</kbd>: focus volumes panel
-  <kbd>6</kbd>: focus networks panel
+  <kbd>1</kbd>: focus containers panel
+  <kbd>2</kbd>: focus images panel
+  <kbd>3</kbd>: focus volumes panel
+  <kbd>4</kbd>: focus networks panel
 </pre>

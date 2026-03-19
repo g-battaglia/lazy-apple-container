@@ -2,24 +2,11 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
 
 # Lazyapple menu
 
-## Project
-
-<pre>
-  <kbd>e</kbd>: verander de lazyapple configuratie
-  <kbd>o</kbd>: open de lazyapple configuratie
-  <kbd>m</kbd>: bekijk logs
-  <kbd>enter</kbd>: focus hoofdpaneel
-  <kbd>[</kbd>: vorige tab
-  <kbd>]</kbd>: volgende tab
-  <kbd>/</kbd>: filter list
-</pre>
-
 ## Containers
 
 <pre>
   <kbd>d</kbd>: verwijder
   <kbd>e</kbd>: verberg gestopte containers
-  <kbd>p</kbd>: pause
   <kbd>s</kbd>: stop
   <kbd>r</kbd>: herstart
   <kbd>a</kbd>: verbinden
@@ -28,30 +15,7 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
   <kbd>c</kbd>: draai een vooraf bedacht aangepaste opdracht
   <kbd>b</kbd>: view bulk commands
   <kbd>w</kbd>: open in browser (first port is http)
-  <kbd>enter</kbd>: focus hoofdpaneel
-  <kbd>[</kbd>: vorige tab
-  <kbd>]</kbd>: volgende tab
-  <kbd>/</kbd>: filter list
-</pre>
-
-## Diensten
-
-<pre>
-  <kbd>u</kbd>: up service
-  <kbd>d</kbd>: verwijder containers
-  <kbd>s</kbd>: stop
-  <kbd>p</kbd>: pause
-  <kbd>r</kbd>: herstart
-  <kbd>S</kbd>: start
-  <kbd>a</kbd>: verbinden
-  <kbd>m</kbd>: bekijk logs
-  <kbd>U</kbd>: up project
-  <kbd>D</kbd>: down project
-  <kbd>R</kbd>: bekijk herstart opties
-  <kbd>c</kbd>: draai een vooraf bedacht aangepaste opdracht
-  <kbd>b</kbd>: view bulk commands
-  <kbd>E</kbd>: exec shell
-  <kbd>w</kbd>: open in browser (first port is http)
+  <kbd>k</kbd>: kill
   <kbd>enter</kbd>: focus hoofdpaneel
   <kbd>[</kbd>: vorige tab
   <kbd>]</kbd>: volgende tab
@@ -105,10 +69,8 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
 <pre>
   <kbd>+</kbd>: next screen mode (normal/half/fullscreen)
   <kbd>_</kbd>: prev screen mode
-  <kbd>1</kbd>: focus projects panel
-  <kbd>2</kbd>: focus services panel
-  <kbd>3</kbd>: focus containers panel
-  <kbd>4</kbd>: focus images panel
-  <kbd>5</kbd>: focus volumes panel
-  <kbd>6</kbd>: focus networks panel
+  <kbd>1</kbd>: focus containers panel
+  <kbd>2</kbd>: focus images panel
+  <kbd>3</kbd>: focus volumes panel
+  <kbd>4</kbd>: focus networks panel
 </pre>

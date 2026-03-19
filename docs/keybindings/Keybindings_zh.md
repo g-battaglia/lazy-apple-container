@@ -2,24 +2,11 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
 
 # Lazyapple 菜单
 
-## 项目
-
-<pre>
-  <kbd>e</kbd>: 编辑lazyapple配置
-  <kbd>o</kbd>: 打开lazyapple配置
-  <kbd>m</kbd>: 查看日志
-  <kbd>enter</kbd>: 聚焦主面板
-  <kbd>[</kbd>: 上一个选项卡
-  <kbd>]</kbd>: 下一个选项卡
-  <kbd>/</kbd>: 过滤列表
-</pre>
-
 ## 容器
 
 <pre>
   <kbd>d</kbd>: 移除
   <kbd>e</kbd>: 隐藏/显示已停止的容器
-  <kbd>p</kbd>: 暂停
   <kbd>s</kbd>: 停止
   <kbd>r</kbd>: 重新启动
   <kbd>a</kbd>: attach
@@ -28,30 +15,7 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
   <kbd>c</kbd>: 运行预定义的自定义命令
   <kbd>b</kbd>: 查看批量命令
   <kbd>w</kbd>: 在浏览器中打开(第一个端口为http)
-  <kbd>enter</kbd>: 聚焦主面板
-  <kbd>[</kbd>: 上一个选项卡
-  <kbd>]</kbd>: 下一个选项卡
-  <kbd>/</kbd>: 过滤列表
-</pre>
-
-## 服务
-
-<pre>
-  <kbd>u</kbd>: 启动服务
-  <kbd>d</kbd>: 移除容器
-  <kbd>s</kbd>: 停止
-  <kbd>p</kbd>: 暂停
-  <kbd>r</kbd>: 重新启动
-  <kbd>S</kbd>: 启动项目
-  <kbd>a</kbd>: attach
-  <kbd>m</kbd>: 查看日志
-  <kbd>U</kbd>: 创建并启动容器
-  <kbd>D</kbd>: 停止并移除容器
-  <kbd>R</kbd>: 查看重启选项
-  <kbd>c</kbd>: 运行预定义的自定义命令
-  <kbd>b</kbd>: 查看批量命令
-  <kbd>E</kbd>: 执行shell
-  <kbd>w</kbd>: 在浏览器中打开(第一个端口为http)
+  <kbd>k</kbd>: kill
   <kbd>enter</kbd>: 聚焦主面板
   <kbd>[</kbd>: 上一个选项卡
   <kbd>]</kbd>: 下一个选项卡
@@ -105,10 +69,8 @@ _This file is auto-generated. To update, make the changes in the pkg/i18n direct
 <pre>
   <kbd>+</kbd>: 下一个屏幕模式（正常/半屏/全屏）
   <kbd>_</kbd>: 上一个屏幕模式
-  <kbd>1</kbd>: focus projects panel
-  <kbd>2</kbd>: focus services panel
-  <kbd>3</kbd>: focus containers panel
-  <kbd>4</kbd>: focus images panel
-  <kbd>5</kbd>: focus volumes panel
-  <kbd>6</kbd>: focus networks panel
+  <kbd>1</kbd>: focus containers panel
+  <kbd>2</kbd>: focus images panel
+  <kbd>3</kbd>: focus volumes panel
+  <kbd>4</kbd>: focus networks panel
 </pre>
