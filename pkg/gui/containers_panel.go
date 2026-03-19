@@ -211,14 +211,22 @@ func (gui *Gui) renderContainerTop(container *commands.Container) tasks.TaskFunc
 	return gui.NewTickerTask(TickerTaskOpts{
 		Func: func(ctx context.Context, notifyStopped chan struct{}) {
 			contents, err := container.RenderTop(ctx)
+			// If the context was cancelled (tab switched), don't write anything
+			if ctx.Err() != nil {
+				return
+			}
 			if err != nil {
 				gui.RenderStringMain(err.Error())
+				return
 			}
 
 			gui.reRenderStringMain(contents)
 		},
-		Duration:   time.Second,
-		Before:     func(ctx context.Context) { gui.clearMainView() },
+		Duration: 3 * time.Second,
+		Before: func(ctx context.Context) {
+			gui.clearMainView()
+			gui.RenderStringMain("Loading...")
+		},
 		Wrap:       gui.Config.UserConfig.Gui.WrapMainPanel,
 		Autoscroll: false,
 	})

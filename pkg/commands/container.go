@@ -96,7 +96,7 @@ func (c *Container) Top(ctx context.Context) ([][]string, []string, error) {
 		return nil, nil, fmt.Errorf("container is not running")
 	}
 
-	stats, err := c.Client.StatsContainer(c.ID, true)
+	stats, err := c.Client.StatsContainer(ctx, c.ID, true)
 	if err != nil {
 		return nil, nil, err
 	}

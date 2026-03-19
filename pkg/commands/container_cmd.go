@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"context"
 	"io"
 	ogLog "log"
 	"time"
@@ -85,7 +86,7 @@ func (c *ContainerCommand) CreateClientStatMonitor(container *Container) {
 		now := time.Now()
 		timeDelta := now.Sub(lastTime)
 
-		stats, err := c.Client.StatsContainer(container.ID, true)
+		stats, err := c.Client.StatsContainer(context.Background(), container.ID, true)
 		if err != nil {
 			c.Log.Error(err)
 			consecutiveFailures++

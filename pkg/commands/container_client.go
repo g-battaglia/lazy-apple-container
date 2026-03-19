@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -38,9 +39,16 @@ func NewContainerClient(log *logrus.Entry, osCommand *OSCommand, tr *i18n.Transl
 }
 
 func (c *ContainerClient) runContainerCommand(args ...string) ([]byte, error) {
-	cmd := exec.Command("container", args...)
+	return c.runContainerCommandContext(context.Background(), args...)
+}
+
+func (c *ContainerClient) runContainerCommandContext(ctx context.Context, args ...string) ([]byte, error) {
+	cmd := exec.CommandContext(ctx, "container", args...)
 	output, err := cmd.Output()
 	if err != nil {
+		if ctx.Err() != nil {
+			return nil, ctx.Err()
+		}
 		if exitErr, ok := err.(*exec.ExitError); ok {
 			return nil, fmt.Errorf("%s: %s", err.Error(), string(exitErr.Stderr))
 		}
@@ -301,7 +309,7 @@ func (c *ContainerClient) LogsContainer(id string, follow bool, tail int) *exec.
 	return exec.Command("container", args...)
 }
 
-func (c *ContainerClient) StatsContainer(id string, noStream bool) ([]AppleContainerStats, error) {
+func (c *ContainerClient) StatsContainer(ctx context.Context, id string, noStream bool) ([]AppleContainerStats, error) {
 	args := []string{"stats", "--format", "json"}
 
 	if noStream {
@@ -312,7 +320,7 @@ func (c *ContainerClient) StatsContainer(id string, noStream bool) ([]AppleConta
 		args = append(args, id)
 	}
 
-	output, err := c.runContainerCommand(args...)
+	output, err := c.runContainerCommandContext(ctx, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -548,7 +556,7 @@ func (c *ContainerClient) CreateStatsMonitor(container *Container, callback func
 			return
 		}
 
-		stats, err := c.StatsContainer(container.ID, true)
+		stats, err := c.StatsContainer(context.Background(), container.ID, true)
 		if err != nil {
 			c.Log.Error(err)
 			continue
