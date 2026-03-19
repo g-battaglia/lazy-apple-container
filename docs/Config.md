@@ -6,10 +6,9 @@ The location of the user config will differ depending on your OS. You can open i
 
 Changes to the user config will only take place after closing and re-opening lazyapple
 
-### Locations:
+### Location:
 
-- macOS: `~/Library/Application Support/jesseduffield/lazyapple/config.yml`
-- Linux: `~/.config/lazyapple/config.yml`
+- macOS: `~/Library/Application Support/lazyapple/config.yml` (or `~/Library/Application Support/jesseduffield/lazyapple/config.yml` if migrating from an earlier install)
 
 ## Default:
 
