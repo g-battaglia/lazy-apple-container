@@ -44,8 +44,6 @@ gui:
   # "icon": unicode emoji.
   containerStatusHealthStyle: "long"
 logs:
-  timestamps: false
-  since: '60m' # set to '' to show all logs
   tail: '' # set to 200 to show last 200 lines of logs
 oS:
   openCommand: open {{filename}}

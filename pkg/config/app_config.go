@@ -82,9 +82,7 @@ type CustomCommand struct {
 }
 
 type LogsConfig struct {
-	Timestamps bool   `yaml:"timestamps,omitempty"`
-	Since      string `yaml:"since,omitempty"`
-	Tail       string `yaml:"tail,omitempty"`
+	Tail string `yaml:"tail,omitempty"`
 }
 
 type OSConfig struct {
@@ -122,9 +120,7 @@ func GetDefaultConfig() UserConfig {
 		},
 		ConfirmOnQuit: false,
 		Logs: LogsConfig{
-			Timestamps: false,
-			Since:      "60m",
-			Tail:       "",
+			Tail: "",
 		},
 		CustomCommands: CustomCommands{
 			Containers: []CustomCommand{},
