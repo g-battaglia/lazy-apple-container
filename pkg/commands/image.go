@@ -20,7 +20,7 @@ type Image struct {
 }
 
 func (i *Image) Remove(force bool) error {
-	return i.Client.RemoveImage(i.ID, force)
+	return i.Client.RemoveImage(i.AppleImage.Reference, force)
 }
 
 func (i *Image) Pull() error {
