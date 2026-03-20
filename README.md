@@ -38,27 +38,26 @@ If you get `command not found`, Apple Container is not installed on your system.
 
 ## Install
 
+### Homebrew
+
+```bash
+brew install g-battaglia/lazyapple/lazy-apple-container
+```
+
+After installation, run:
+
+```bash
+lazyapple
+```
+
 ### Build from source
 
 ```bash
 git clone https://github.com/g-battaglia/lazy-apple-container.git
 cd lazy-apple-container
 go build -o lazyapple .
-```
-
-### Run it
-
-```bash
-./lazyapple
-```
-
-### Optional: install to PATH
-
-```bash
 sudo cp lazyapple /usr/local/bin/
 ```
-
-Then just run `lazyapple` from anywhere.
 
 ## Keybindings
 
