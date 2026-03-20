@@ -1,10 +1,12 @@
 package commands
 
+import "encoding/json"
+
 type AppleContainer struct {
 	Configuration struct {
-		ID        string `json:"id"`
-		Name      string `json:"-"`
-		Image     struct {
+		ID    string `json:"id"`
+		Name  string `json:"-"`
+		Image struct {
 			Reference  string `json:"reference"`
 			Descriptor struct {
 				Digest    string `json:"digest"`
@@ -22,12 +24,12 @@ type AppleContainer struct {
 			OS           string `json:"os"`
 		} `json:"platform"`
 		InitProcess struct {
-			Environment  []string `json:"environment"`
-			Executable   string   `json:"executable"`
-			Arguments    []string `json:"arguments"`
-			WorkingDir   string   `json:"workingDirectory"`
-			Terminal     bool     `json:"terminal"`
-			User         struct {
+			Environment []string `json:"environment"`
+			Executable  string   `json:"executable"`
+			Arguments   []string `json:"arguments"`
+			WorkingDir  string   `json:"workingDirectory"`
+			Terminal    bool     `json:"terminal"`
+			User        struct {
 				ID struct {
 					UID int `json:"uid"`
 					GID int `json:"gid"`
@@ -67,10 +69,10 @@ type AppleContainer struct {
 }
 
 type Mount struct {
-	Type     string `json:"type"`
-	Source   string `json:"source"`
-	Target   string `json:"target"`
-	ReadOnly bool   `json:"readonly"`
+	Type        json.RawMessage `json:"type"`
+	Source      string          `json:"source"`
+	Destination string          `json:"destination"`
+	Options     []string        `json:"options"`
 }
 
 type AppleContainerStats struct {
@@ -86,7 +88,7 @@ type AppleContainerStats struct {
 }
 
 type AppleImage struct {
-	Reference string `json:"reference"`
+	Reference  string `json:"reference"`
 	Descriptor struct {
 		Digest    string `json:"digest"`
 		Size      int64  `json:"size"`
@@ -96,8 +98,8 @@ type AppleImage struct {
 }
 
 type AppleVolume struct {
-	Name       string `json:"name"`
-	SizeInBytes int64 `json:"sizeInBytes"`
+	Name        string `json:"name"`
+	SizeInBytes int64  `json:"sizeInBytes"`
 }
 
 type AppleNetwork struct {
@@ -111,7 +113,7 @@ type AppleNetwork struct {
 			Plugin  string `json:"plugin"`
 		} `json:"pluginInfo"`
 	} `json:"config"`
-	State string `json:"state"`
+	State  string `json:"state"`
 	Status struct {
 		IPv4Subnet  string `json:"ipv4Subnet"`
 		IPv6Subnet  string `json:"ipv6Subnet"`
@@ -145,20 +147,20 @@ type SystemStatus struct {
 }
 
 type CreateContainerOptions struct {
-	Name       string
-	Image      string
-	Command    []string
-	Env        []string
-	WorkingDir string
-	CPUS       int
-	Memory     string
-	Volumes    []string
-	Networks   []string
-	Ports      []string
-	Labels     map[string]string
-	Detach     bool
+	Name        string
+	Image       string
+	Command     []string
+	Env         []string
+	WorkingDir  string
+	CPUS        int
+	Memory      string
+	Volumes     []string
+	Networks    []string
+	Ports       []string
+	Labels      map[string]string
+	Detach      bool
 	Interactive bool
-	TTY        bool
+	TTY         bool
 }
 
 type ExecOptions struct {
