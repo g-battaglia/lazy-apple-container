@@ -1,6 +1,6 @@
-# lazyapple
+# Lazy Apple Container
 
-![lazyapple screenshot](https://raw.githubusercontent.com/g-battaglia/lazy-apple-container/main/preview.png)
+![lazyapple screenshot](https://raw.githubusercontent.com/g-battaglia/lazy-apple-container/refs/heads/master/preview.jpg)
 
 A terminal UI for [Apple Container](https://developer.apple.com/documentation/virtualization/running_linux_containers) -- the native macOS container runtime introduced in macOS 26.
 
